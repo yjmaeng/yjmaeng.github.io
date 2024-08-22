@@ -723,8 +723,9 @@ $btn-mb: 0.5rem;
     @include mt-mb(2.5rem);
     @extend %clickable-transition;
     padding-left: 2.5rem;
-    padding-right: 1.25rem;
+    padding-right: 4.0rem;
     width: 100%;
+    text-align: center; /* 텍스트 및 인라인 요소를 중앙 정렬 */
   }
 
   .site-title {
