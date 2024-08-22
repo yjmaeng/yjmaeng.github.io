@@ -671,7 +671,6 @@ $btn-mb: 0.5rem;
 
 #sidebar {
   @include pl-pr(0);
-
   position: fixed;
   top: 0;
   left: 0;
@@ -681,11 +680,9 @@ $btn-mb: 0.5rem;
   z-index: 99;
   background: var(--sidebar-bg);
   border-right: 1px solid var(--sidebar-border-color);
-
   /* Hide scrollbar for IE, Edge and Firefox */
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
-
   /* Hide scrollbar for Chrome, Safari and Opera */
   &::-webkit-scrollbar {
     display: none;
@@ -703,17 +700,21 @@ $btn-mb: 0.5rem;
 
   #avatar {
     display: block;
-    width: 10rem;
-    height: 10rem;
+    width: 10rem; /* 프로필 이미지 컨테이너의 너비 */
+    height: 10rem; /* 프로필 이미지 컨테이너의 높이 */
     overflow: hidden;
     box-shadow: var(--avatar-border-color) 0 0 0 2px;
-    transform: translateZ(0); /* fixed the zoom in Safari */
+    transform: translateZ(0); /* Safari에서의 확대 문제를 해결 */
+    margin-left: 1rem; /* 왼쪽 마진 추가 */
 
     img {
-      transition: transform 0.5s;
+      width: 100%; /* 이미지를 컨테이너의 너비에 맞춤 */
+      height: 100%; /* 이미지를 컨테이너의 높이에 맞춤 */
+      object-fit: cover; /* 이미지의 종횡비를 유지하면서 컨테이너를 채우도록 설정 */
+      transition: transform 0.5s; /* 이미지 확대 시의 전환 효과 */
 
       &:hover {
-        transform: scale(1.2);
+        transform: scale(1.2); /* 마우스 오버 시 이미지 확대 */
       }
     }
   }
@@ -721,7 +722,6 @@ $btn-mb: 0.5rem;
   .profile-wrapper {
     @include mt-mb(2.5rem);
     @extend %clickable-transition;
-
     padding-left: 2.5rem;
     padding-right: 1.25rem;
     width: 100%;
@@ -739,7 +739,6 @@ $btn-mb: 0.5rem;
     a {
       @extend %clickable-transition;
       @extend %sidebar-link-hover;
-
       color: var(--site-title-color);
     }
   }
@@ -766,7 +765,6 @@ $btn-mb: 0.5rem;
 
       a.nav-link {
         @include pt-pb(0.6rem);
-
         display: flex;
         align-items: center;
         border-radius: 0.75rem;
@@ -856,7 +854,6 @@ $btn-mb: 0.5rem;
     .icon-border {
       @extend %no-cursor;
       @include ml-mr(calc(($sb-btn-gap - $btn-border-width) / 2));
-
       background-color: var(--sidebar-btn-color);
       content: '';
       width: $btn-border-width;
@@ -864,7 +861,8 @@ $btn-mb: 0.5rem;
       border-radius: 50%;
       margin-bottom: $btn-mb;
     }
-  } /* .sidebar-bottom */
+  }
+  /* .sidebar-bottom */
 } /* #sidebar */
 
 @media (hover: hover) {
@@ -1231,8 +1229,8 @@ search {
   }
 
   #avatar {
-    width: 10rem;
-    height: 10rem;
+    width: 5rem;
+    height: 5rem;
   }
 }
 
